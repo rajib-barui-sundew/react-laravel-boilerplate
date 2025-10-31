@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-close-tag",
+    "streetsidesoftware.code-spell-checker",
+    "Jacano.vscode-pnpm",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "leizongmin.node-module-intellisense",
+    "eamodio.gitlens",
+    "rangav.vscode-thunder-client",
+    "ms-vscode.vscode-typescript-next"
+  ]
+}

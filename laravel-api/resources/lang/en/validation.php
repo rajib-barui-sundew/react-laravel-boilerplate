@@ -1,0 +1,40 @@
+<?php
+
+return [
+  'required' => ':attribute is required',
+  'missing' => ':attribute is missing',
+  'string' => ':attribute must be a string',
+  'array' => ':attribute must be an array',
+  'numeric' => ':attribute must be a number',
+  'file' => ':attribute must be a file',
+  'mimes' => ':attribute must be a file of type: :values',
+  'invalid' => ':attribute is invalid',
+  'confirmed' => ':attribute confirmation does not match',
+  'match' => ':attribute does not match :target',
+  'email' => ':attribute must be a valid email address',
+  'integer' => ':attribute must be an integer',
+  'exists' => ':attribute does not exist',
+  'unique' => ':attribute already exists',
+  'not_registered' => ':attribute is not registered',
+  'cant_match' => ':attribute cannot be the same as :target',
+  'url' => ':attribute must be a valid URL',
+  'required_if' => ':attribute is required when :other is :value',
+  'between' => [
+    'numeric' => ':attribute must be between :min and :max',
+    'file' => ':attribute must be between :min and :max kilobytes',
+    'string' => ':attribute must be between :min and :max characters',
+    'array' => ':attribute must have between :min and :max items',
+  ],
+  'min' => [
+    'numeric' => ':attribute must be at least :min',
+    'file' => ':attribute must be at least :min kilobytes',
+    'string' => ':attribute must be at least :min characters',
+    'array' => ':attribute must have at least :min items',
+  ],
+  'max' => [
+    'numeric' => ':attribute must not be greater than :max',
+    'file' => ':attribute must not be greater than :max kilobytes',
+    'string' => ':attribute must not be greater than :max characters',
+    'array' => ':attribute must not have more than :max items',
+  ],
+];
