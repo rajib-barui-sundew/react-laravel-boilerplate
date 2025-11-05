@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useAuthStore } from '../../backend/store/authStore';
+import { useAuthStore } from '../../admin/store/authStore';
 
 export default function AdminLogin() {
   const navigate = useNavigate();

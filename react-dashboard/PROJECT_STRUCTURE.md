@@ -1,258 +1,81 @@
 # Project Structure Documentation
 
 ## Overview
+This project is organized using industry-standard best practices to promote clear separation between the **Admin Panel** and **Frontend User App**. This makes onboarding, maintenance, and scaling far easier for teams and individual developers.
 
-This project follows a feature-based architecture with clear separation of concerns, inspired by modern Next.js patterns adapted for React + Vite.
-
-## Folder Structure
-
+## Directory Structure
 ```
 src/
-├── services/                    # API Services Layer
-│   ├── http.ts                 # Axios instance with interceptors
-│   ├── auth.service.ts         # Authentication API calls
-│   ├── dashboard.service.ts    # Dashboard API calls
-│   └── apiConfig.ts            # API configuration
+├── admin/                  # All admin panel (dashboard) code
+│   ├── components/         # Shared/admin-only UI components
+│   ├── contexts/           # React context providers (auth, theme, sidebar, etc.)
+│   ├── hooks/              # Custom admin React hooks
+│   ├── layouts/            # Admin layouts (sidebars, wrappers, etc.)
+│   ├── pages/              # All admin-side routes (auth, dashboard, users, etc.)
+│   │   ├── auth/           # Admin authentication pages (sign in, etc.)
+│   │   └── ...             # Dashboard, users, tables, charts, etc.
+│   ├── services/           # API service modules (admin only)
+│   ├── store/              # State managers/store (Zustand, Redux, etc.)
+│   ├── types/              # Shared admin-facing TypeScript types
+│   └── utils/              # Helper functions for admin-side only
 │
-├── lib/                        # Shared Libraries
-│   ├── schemas/                # Zod validation schemas
-│   │   └── auth.schema.ts      # Auth form validation
-│   └── utils/                  # Utility functions
-│       └── utils.ts            # Common utilities (cn, formatDate, etc.)
+├── frontend/               # All user-facing website/app code
+│   ├── components/         # Shared UI components for frontend
+│   ├── contexts/           # Contexts for frontend
+│   ├── hooks/              # Custom hooks for users
+│   ├── layouts/            # Website layouts (header, footer, etc.)
+│   ├── pages/              # Route-level frontend components
+│   ├── services/           # API utilities specific to frontend
+│   ├── store/              # State management for frontend
+│   ├── types/              # Types/interfaces for user side
+│   └── utils/              # Frontend-side utility functions
 │
-├── components/                 # React Components
-│   ├── auth/                   # Authentication components
-│   │   ├── SignInForm.tsx
-│   │   ├── SignUpForm.tsx
-│   │   └── ProtectedRoute.tsx
-│   ├── dashboard/              # Dashboard components (formerly ecommerce)
-│   │   ├── EcommerceMetrics.tsx
-│   │   ├── MonthlySalesChart.tsx
-│   │   ├── StatisticsChart.tsx
-│   │   ├── MonthlyTarget.tsx
-│   │   ├── RecentOrders.tsx
-│   │   └── DemographicCard.tsx
-│   ├── common/                 # Shared components
-│   │   ├── PageMeta.tsx
-│   │   ├── PageBreadCrumb.tsx
-│   │   └── ScrollToTop.tsx
-│   ├── form/                   # Form components
-│   │   ├── Label.tsx
-│   │   ├── input/
-│   │   ├── select/
-│   │   └── textarea/
-│   ├── header/                 # Header components
-│   │   ├── AppHeader.tsx
-│   │   ├── UserDropdown.tsx
-│   │   └── ThemeToggle.tsx
-│   ├── tables/                 # Table components
-│   ├── charts/                 # Chart components
-│   └── ui/                     # UI Library (shadcn-style)
-│       ├── button/
-│       ├── badge/
-│       ├── avatar/
-│       └── alert/
-│
-├── store/                      # Zustand State Management
-│   └── authStore.ts            # Authentication state
-│
-├── context/                    # React Context
-│   ├── ThemeContext.tsx        # Theme management
-│   └── SidebarContext.tsx      # Sidebar state
-│
-├── hooks/                      # Custom React Hooks
-│   └── useAuth.ts
-│
-├── layout/                     # Layout Components
-│   ├── AppLayout.tsx           # Main app layout
-│   ├── AppSidebar.tsx          # Sidebar navigation
-│   └── AuthLayout.tsx          # Auth pages layout
-│
-├── pages/                      # Page Components
-│   ├── AuthPages/
-│   │   ├── SignIn.tsx
-│   │   └── SignUp.tsx
-│   ├── Dashboard/
-│   │   ├── Home.tsx
-│   │   └── Backup.tsx
-│   ├── Calendar.tsx
-│   ├── UserProfiles.tsx
-│   └── Blank.tsx
-│
-├── types/                      # TypeScript Type Definitions
-│   ├── auth.ts
-│   ├── dashboard.ts
-│   └── user.ts
-│
-├── icons/                      # SVG Icons
-│
-├── styles/                     # Global Styles
-│   └── index.css
-│
-├── App.tsx                     # Main App Component
-├── main.tsx                    # Entry Point
-└── vite-env.d.ts              # Vite Environment Types
+├── icons/                  # Central SVG/icon assets for project-wide use
+├── lang/                   # Localization/language files (shared)
+├── index.css               # Global CSS
+├── main.tsx                # React/TS application bootstrap
+├── App.tsx                 # App entry/root layout and router
+├── ...                     # Shared types, environment, config, etc.
 ```
 
-## Architecture Patterns
+---
 
-### 1. Services Layer (`src/services/`)
+## What Goes Where?
 
-**Purpose**: Centralize all API calls and external service interactions.
+- **admin/**: Strictly for code used by the admin panel/dashboard.
+- **frontend/**: Code for the user-facing side (e.g., homepage, user signup, landing pages, etc.).
+- **icons/**: Place all SVGs or icon components here for sharing across both sides.
+- **lang/**: Any translations or language-specific files for i18n.
+- **index.css**: Styles that apply project-wide.
 
-**Pattern**:
-```typescript
-// services/auth.service.ts
-export const authService = {
-  login: async (email: string, password: string) => { ... },
-  logout: async () => { ... },
-};
-```
+### Shared Code
+If logic/components need to be shared (rare), use `src/shared/` and document usage thoroughly.
 
-**Benefits**:
-- Single source of truth for API calls
-- Easy to mock for testing
-- Consistent error handling
-- Type-safe API responses
+---
 
-### 2. Schemas (`src/lib/schemas/`)
+## Onboarding Tips
+- **Routes and Pages**: Match each route to a file/subfolder under `pages/` in its respective directory.
+- **Keep Concerns Separated**: Don’t cross-import from `admin/` to `frontend/` (or vice versa) unless using a clearly defined shared module.
+- **Follow Naming Conventions**: Prefer `AdminSignIn.tsx`, `UserHome.tsx`, etc., for clarity.
+- **New Features**: Place files in the corresponding domain (`admin/pages/Reports/ReportList.tsx`, `frontend/pages/Home.tsx`, etc.).
+- **Services**: Keep API/services specific to their respective module, unless shared by both.
 
-**Purpose**: Centralize validation logic using Zod.
-
-**Pattern**:
-```typescript
-// lib/schemas/auth.schema.ts
-export const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
-});
-
-export type LoginCredentials = z.infer<typeof loginSchema>;
-```
-
-**Benefits**:
-- Reusable validation across forms and API
-- Type inference from schemas
-- Runtime validation
-- Clear validation rules
-
-### 3. State Management (`src/store/`)
-
-**Purpose**: Global state using Zustand with persistence.
-
-**Pattern**:
-```typescript
-export const useAuthStore = create<AuthState>()(
-  persist(
-    (set) => ({
-      user: null,
-      login: async (credentials) => { ... },
-      logout: () => { ... },
-    }),
-    { name: 'auth-storage' }
-  )
-);
-```
-
-**Benefits**:
-- Simple API
-- Built-in persistence
-- TypeScript support
-- No boilerplate
-
-### 4. Component Organization
-
-**Feature-based**: Components grouped by feature (auth, dashboard, etc.)
-**Shared**: Common components in `common/` and `ui/`
-**Atomic**: Small, reusable components
-
-## Naming Conventions
-
-### Files
-- Components: `PascalCase.tsx` (e.g., `SignInForm.tsx`)
-- Services: `kebab-case.service.ts` (e.g., `auth.service.ts`)
-- Schemas: `kebab-case.schema.ts` (e.g., `auth.schema.ts`)
-- Types: `kebab-case.ts` (e.g., `auth.ts`)
-- Utils: `kebab-case.ts` (e.g., `utils.ts`)
-
-### Exports
-- Named exports for services: `export const authService = { ... }`
-- Default exports for components: `export default function SignInForm() { ... }`
-- Named exports for types and schemas
-
-## Import Patterns
-
-### Absolute Imports (Recommended for Future)
-```typescript
-import { authService } from '@/services/auth.service';
-import { loginSchema } from '@/lib/schemas/auth.schema';
-import { Button } from '@/components/ui/button';
-```
-
-### Current Relative Imports
-```typescript
-import { authService } from '../../services/auth.service';
-import { loginSchema } from '../../lib/schemas/auth.schema';
-```
-
-## Environment Variables
-
-```env
-# API Configuration
-VITE_API_BASE_URL=/api
-VITE_AUTH_API_BASE_URL=https://reqres.in/api
-VITE_API_KEY=your-api-key
-```
+---
 
 ## Best Practices
+- Use context/providers for app-wide state.
+- Favor local state/hooks for isolated UI state.
+- For larger shared utilities, consider documenting and placing in a top-level `shared/` folder.
+- Group granular UI elements (buttons, badges, etc.) in `components/ui/` within each main folder.
+- Update this document if you add/remove major folders or alter conventions.
 
-### 1. Service Layer
-- All API calls go through services
-- Services return typed responses
-- Handle errors in services or components
-- Use consistent naming (e.g., `getX`, `createX`, `updateX`, `deleteX`)
+---
 
-### 2. Components
-- Keep components small and focused
-- Use composition over inheritance
-- Extract reusable logic to hooks
-- Co-locate related files
+## Example Usage
+Adding a new dashboard widget? Place your file under `admin/components/dashboard/` and add the route/component entry in `admin/pages/Dashboard/`.
 
-### 3. State Management
-- Use Zustand for global state
-- Use React Query for server state
-- Use local state for UI state
-- Persist only necessary data
+Adding a homepage hero banner for the user site? Place it under `frontend/components/banner/` and connect it in `frontend/pages/Home.tsx`.
 
-### 4. Types
-- Define types close to usage
-- Export types from service files
-- Use Zod for runtime validation
-- Leverage type inference
+---
 
-## Migration from Old Structure
-
-See `MIGRATION_GUIDE.md` for detailed migration steps.
-
-## Future Enhancements
-
-1. **App Router Structure**: Move pages to `src/app/` with route-based organization
-2. **Feature Modules**: Group related components, services, and types by feature
-3. **Barrel Exports**: Add `index.ts` files for cleaner imports
-4. **Path Aliases**: Configure `@/` imports in `tsconfig.json`
-5. **Testing**: Add test files co-located with components
-6. **Documentation**: Add JSDoc comments to services and complex components
-
-## Contributing
-
-When adding new features:
-1. Create service in `src/services/`
-2. Define schemas in `src/lib/schemas/`
-3. Create components in appropriate feature folder
-4. Update types in `src/types/`
-5. Add to store if needed for global state
-6. Update this documentation
-
-## Questions?
-
-Refer to the codebase examples or check the migration guide for patterns.
+**For questions or amendments, update this README!**

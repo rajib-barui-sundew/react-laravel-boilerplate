@@ -1,26 +1,26 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
-import SignIn from "./backend/pages/AuthPages/SignIn";
-import SignUp from "./backend/pages/AuthPages/SignUp";
-import AdminLogin from "./frontend/pages/AdminLogin";
-import NotFound from "./backend/pages/OtherPage/NotFound";
-import UserProfiles from "./backend/pages/UserProfiles";
-import Videos from "./backend/pages/UiElements/Videos";
-import Images from "./backend/pages/UiElements/Images";
-import Alerts from "./backend/pages/UiElements/Alerts";
-import Badges from "./backend/pages/UiElements/Badges";
-import Avatars from "./backend/pages/UiElements/Avatars";
-import Buttons from "./backend/pages/UiElements/Buttons";
-import LineChart from "./backend/pages/Charts/LineChart";
-import BarChart from "./backend/pages/Charts/BarChart";
-import Calendar from "./backend/pages/Calendar";
-import BasicTables from "./backend/pages/Tables/BasicTables";
-import FormElements from "./backend/pages/Forms/FormElements";
-import Blank from "./backend/pages/Blank";
-import AppLayout from './backend/layout/AppLayout';
-import { ScrollToTop } from './backend/components/common/ScrollToTop';
-import Home from './backend/pages/Dashboard/Home';
-import Backup from './backend/pages/Dashboard/Backup';
-import ProtectedRoute from './backend/components/auth/ProtectedRoute';
+import SignIn from "./admin/pages/AuthPages/SignIn";
+import SignUp from "./admin/pages/AuthPages/SignUp";
+import AdminLogin from "./frontend/pages/AdminSignIn";
+import NotFound from "./admin/pages/OtherPage/NotFound";
+import UserProfiles from "./admin/pages/UserProfiles";
+import Videos from "./admin/pages/UiElements/Videos";
+import Images from "./admin/pages/UiElements/Images";
+import Alerts from "./admin/pages/UiElements/Alerts";
+import Badges from "./admin/pages/UiElements/Badges";
+import Avatars from "./admin/pages/UiElements/Avatars";
+import Buttons from "./admin/pages/UiElements/Buttons";
+import LineChart from "./admin/pages/Charts/LineChart";
+import BarChart from "./admin/pages/Charts/BarChart";
+import Calendar from "./admin/pages/Calendar";
+import BasicTables from "./admin/pages/Tables/BasicTables";
+import FormElements from "./admin/pages/Forms/FormElements";
+import Blank from "./admin/pages/Blank";
+import AppLayout from './admin/layout/AppLayout';
+import { ScrollToTop } from './admin/components/common/ScrollToTop';
+import Home from './admin/pages/Dashboard/Home';
+import Backup from './admin/pages/Dashboard/Backup';
+import ProtectedRoute from './admin/components/auth/ProtectedRoute';
 
 export default function App() {
   return (
