@@ -4,7 +4,7 @@ import "./index.css";
 import "swiper/swiper-bundle.css";
 import "flatpickr/dist/flatpickr.css";
 import App from "./App.tsx";
-import { AppWrapper } from "./admin/components/common/PageMeta.tsx";
+import { AppWrapper } from "./common/components/PageMeta.tsx";
 import { ThemeProvider } from "./admin/context/ThemeContext.tsx";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { initializeZodErrorMap } from "./admin/lib/utils/zod-error-map.utilities.ts";

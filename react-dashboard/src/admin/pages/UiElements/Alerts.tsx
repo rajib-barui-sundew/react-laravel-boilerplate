@@ -1,7 +1,7 @@
-import PageBreadcrumb from "../../components/common/PageBreadCrumb";
-import ComponentCard from "../../components/common/ComponentCard";
+import PageBreadcrumb from "../../../common/components/PageBreadCrumb";
+import ComponentCard from "../../../common/components/ComponentCard";
 import Alert from "../../components/ui/alert/Alert";
-import PageMeta from "../../components/common/PageMeta";
+import PageMeta from "../../../common/components/PageMeta";
 
 export default function Alerts() {
   return (

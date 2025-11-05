@@ -4,7 +4,7 @@ import StatisticsChart from "../../components/dashboard/StatisticsChart";
 import MonthlyTarget from "../../components/dashboard/MonthlyTarget";
 import RecentOrders from "../../components/dashboard/RecentOrders";
 import DemographicCard from "../../components/dashboard/DemographicCard";
-import PageMeta from "../../components/common/PageMeta";
+import PageMeta from "../../../common/components/PageMeta";
 
 export default function Backup() {
   return (

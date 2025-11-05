@@ -1,4 +1,4 @@
-import PageMeta from "../../components/common/PageMeta";
+import PageMeta from "../../../common/components/PageMeta";
 
 export default function Home() {
   return (
