@@ -8,7 +8,7 @@ interface LoginCredentialsWithAdmin extends LoginCredentials {
   isAdmin?: boolean;
 }
 
-interface AuthState {
+export interface AuthState {
   user: User | null;
   token: string | null;
   isAuthenticated: boolean;

@@ -56,7 +56,7 @@ If logic/components need to be shared (rare), use `src/shared/` and document usa
 ## Onboarding Tips
 - **Routes and Pages**: Match each route to a file/subfolder under `pages/` in its respective directory.
 - **Keep Concerns Separated**: Don’t cross-import from `admin/` to `frontend/` (or vice versa) unless using a clearly defined shared module.
-- **Follow Naming Conventions**: Prefer `AdminSignIn.tsx`, `UserHome.tsx`, etc., for clarity.
+- **Follow Naming Conventions**: Prefer `UserLogin.tsx`, `UserHome.tsx`, etc., for clarity.
 - **New Features**: Place files in the corresponding domain (`admin/pages/Reports/ReportList.tsx`, `frontend/pages/Home.tsx`, etc.).
 - **Services**: Keep API/services specific to their respective module, unless shared by both.
 

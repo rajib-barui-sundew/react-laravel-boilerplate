@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import SignIn from "./admin/pages/AuthPages/SignIn";
 import SignUp from "./admin/pages/AuthPages/SignUp";
-import AdminLogin from "./frontend/pages/AdminSignIn";
+import UserLogin from "./frontend/pages/auth/UserLogin";
 import NotFound from "./admin/pages/OtherPage/NotFound";
 import UserProfiles from "./admin/pages/UserProfiles";
 import Videos from "./admin/pages/UiElements/Videos";
@@ -60,7 +60,7 @@ export default function App() {
           </Route>
 
           {/* Admin Auth Layout (frontend basic page) */}
-          <Route path="/admin/signin" element={<AdminLogin />} />
+          <Route path="/admin/signin" element={<UserLogin />} />
           <Route path="/admin/signup" element={<SignUp />} />
           {/* User Auth Routes */}
           <Route path="/signin" element={<SignIn />} />

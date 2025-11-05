@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../../icons";
+import { EyeCloseIcon, EyeIcon } from "../../../icons";
 import Label from "../form/Label";
 import Checkbox from "../form/input/Checkbox";
 import Input from "../form/input/InputField";
